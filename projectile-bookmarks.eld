@@ -1,0 +1,1 @@
+("~/.emacs.d/" "d:/Home/Works/Git/git_cloud/" "d:/Home/Works/")

@@ -1,0 +1,43 @@
+;; -*- mode: emacs-lisp; lexical-binding:t; coding: utf-8-emacs; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Tue Apr 30 10:33:00 2024
+;; Desktop file format version 208
+;; Emacs version 29.2
+
+;; Global section:
+(setq desktop-saved-frameset [frameset 1 (26161 284 419223 0) (desktop . "208") "wyqwo@Yuqi" nil nil ((((minibuffer . t) (undecorated) (skip-taskbar) (font . "-outline-Courier New-regular-normal-normal-mono-13-*-*-*-c-*-iso8859-1") (border-width . 0) (internal-border-width . 0) (child-frame-border-width) (right-divider-width . 0) (bottom-divider-width . 0) (vertical-scroll-bars) (horizontal-scroll-bars) (foreground-color . "#DCDCCC") (background-color . "#3F3F3F") (mouse-color . "black") (border-color . "black") (screen-gamma) (line-spacing) (left-fringe . 8) (right-fringe . 8) (no-focus-on-map) (no-accept-focus) (no-special-glyphs) (alpha-background) (alpha) (menu-bar-lines . 0) (tab-bar-lines . 0) (height . 85) (tool-bar-lines . 0) (inhibit-double-buffering) (title) (icon-type) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 17) (scroll-bar-height . 17) (fullscreen . maximized) (z-group) (visibility . t) (scroll-bar-foreground . "systemscrollbar") (scroll-bar-background) (display-type . color) (background-mode . dark) (cursor-color . "#FFFFEF") (font-parameter) (environment) (last-focus-update . t) (frameset--id . "D4B5-AC62-FC0A-120B") (frameset--mini t . t) (width . 318) (modeline . t) (unsplittable) (left + -8) (top + -8) (icon-name) (display . "w32") (explicit-name) (tool-bar-position . top)) ((min-height . 4) (min-width . 20) (min-height-ignore . 3) (min-width-ignore . 8) (min-height-safe . 1) (min-width-safe . 4) (min-pixel-height . 64) (min-pixel-width . 160) (min-pixel-height-ignore . 48) (min-pixel-width-ignore . 64) (min-pixel-height-safe . 16) (min-pixel-width-safe . 32)) hc (pixel-width . 2560) (pixel-height . 1353) (total-width . 320) (total-height . 85) (normal-height . 1.0) (normal-width . 1.0) (combination-limit) (leaf (pixel-width . 1280) (pixel-height . 1353) (total-width . 160) (total-height . 85) (normal-height . 1.0) (normal-width . 0.5) (buffer "Rearches.org<PhD_Org>" (selected . t) (hscroll . 0) (fringes 8 8 nil nil) (margins nil) (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 230) (start . 1)) (prev-buffers ("*eaf*" 1 1))) (leaf (last . t) (pixel-width . 1280) (pixel-height . 1353) (total-width . 160) (total-height . 85) (normal-height . 1.0) (normal-width . 0.5) (buffer "Rearches.org" (selected) (hscroll . 0) (fringes 8 8 nil nil) (margins nil) (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 1) (start . 1)) (prev-buffers ("Rearches.org<PhD_Org>" 1 1)))))])
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring nil)
+(setq regexp-search-ring nil)
+(setq register-alist nil)
+(setq file-name-history '("~/.emacs.d/desktop" "d:/home/Works/Git/git_cloud/PhD_Papers/PhD_Org/Rearches.org" "d:/Home/Works/Git/git_cloud/PhD_Papers/PhD_Org/Rearches.html" "d:/Home/Works/Git/git_cloud/PhD_Papers/PhD_Org/Rearches.org" "~/.emacs.d/init.el"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 208
+  "d:/Home/Works/Git/git_cloud/PhD_Papers/PhD_Org/Rearches.org"
+  "Rearches.org"
+  'org-mode
+  '(font-lock-mode display-line-numbers-mode evil-local-mode undo-tree-mode)
+  230
+  '(231 nil)
+  nil
+  nil
+  '((buffer-display-time 26161 284 135242 0) (buffer-file-coding-system . undecided-dos) (overwrite-mode) (truncate-lines . t))
+  '((mark-ring (217))))
+
+(desktop-create-buffer 208
+  "c:/Users/wyqwo/HOME/.emacs.d/init.el"
+  "init.el"
+  'emacs-lisp-mode
+  '(display-line-numbers-mode font-lock-mode eldoc-mode evil-local-mode undo-tree-mode)
+  1504
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 26160 64453 235227 0) (buffer-file-coding-system . prefer-utf-8-unix) (overwrite-mode))
+  '((mark-ring nil)))
+
