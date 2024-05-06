@@ -11,6 +11,6 @@
 *.~undo-tree
 
 # folders
-site-lisp/*
+site-lisp/
 .cache/
 elpa/
