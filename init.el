@@ -80,7 +80,8 @@
   :ensure t
   :config
   (evil-mode)
-  (evil-set-undo-system 'undo-tree))
+  (evil-set-undo-system 'undo-tree)
+  (define-key evil-insert-state-map "``" 'evil-normal-state))
 
 ;;;undo-tree
 (use-package undo-tree
@@ -171,7 +172,10 @@
   (helm-projectile-on))
 
 ;;;git
-(use-package magit)
+(use-package magit
+  :config
+  (setq auth-sources '("~/.authinfo.gpg"))
+  )
 
 ;;;Latex
 (use-package auctex
@@ -206,6 +210,8 @@
         org-src-fontify-natively t
         org-startup-folded t
         org-edit-src-content-indentation 0)
+  (setq org-image-actual-width nil)
+  (add-hook 'org-mode-hook (lambda () (setq toggle-truncate-lines nil)))
   (org-babel-do-load-languages
         'org-babel-load-languages
         '((python . t)))
@@ -243,7 +249,22 @@
   :ensure t
   :config
   (setq org-preview-html-refresh-configuration 'save))
-;;;pyvenv
+;;;org-download
+(use-package org-download
+  :after org
+  :defer nil
+  :custom
+  (org-download-method 'directory)
+  (org-download-image-dir "./fig")
+  (org-download-heading-lvl 0)
+  (org-download-timestamp "org_%Y%m%d-%H%M%S_")
+  (org-image-actual-width 900)
+  (org-download-screenshot-method "xclip -selection clipboard -t image/png -o > '%s'")
+  :bind
+  ("C-M-y" . org-download-screenshot)
+  :config
+  (require 'org-download))
+;;;Pyvenv
 (use-package conda
   :ensure t
   :init
