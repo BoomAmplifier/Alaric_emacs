@@ -210,14 +210,16 @@
         org-src-fontify-natively t
         org-startup-folded t
         org-edit-src-content-indentation 0)
-  (setq org-image-actual-width nil)
+  (setq org-image-actual-width '(400))
   (add-hook 'org-mode-hook (lambda () (setq toggle-truncate-lines nil)))
   (org-babel-do-load-languages
         'org-babel-load-languages
         '((python . t)))
   )
+
 ;;;org bullet
 (use-package org-superstar
+  :ensure t
   :config
   (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
   (with-eval-after-load 'org-superstar
@@ -242,8 +244,8 @@
   )
 
 ;;
-(use-package org-preview 
-  :load-path "~/.emacs.d/pkg")
+;(use-package org-preview 
+;  :load-path "~/.emacs.d/pkg")
 ;;;preview org
 (use-package org-preview-html
   :ensure t

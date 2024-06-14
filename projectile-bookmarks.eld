@@ -1,1 +1,1 @@
-("d:/Home/Works/Git/git_cloud/" "~/.emacs.d/" "d:/Home/Works/")
+("~/.emacs.d/" "d:/Home/Works/Git/git_cloud/" "d:/Home/Works/")
