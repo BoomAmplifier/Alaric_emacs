@@ -2,7 +2,9 @@
 ;; Automatically generated file!!! DO NOT EDIT!!!
 
 (setq url-cookie-storage
- 'nil)
+ '(("localhost"
+  [url-cookie "_xsrf" "2|668bc93a|987730cb7aa96002ffecb3e7e156200a|1718722456" "Thu, 18 Jul 2024 14:54:16 GMT" "/" "localhost" nil]))
+)
 (setq url-cookie-secure-storage
  'nil)
 

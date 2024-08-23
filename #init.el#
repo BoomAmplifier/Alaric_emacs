@@ -21,6 +21,7 @@
 (setq inhibit-startup-message t)
 (global-hl-line-mode 1)
 (global-display-line-numbers-mode t)
+
 ;;Install user-package
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -29,9 +30,6 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-;; (use-package spacemacs-theme
-  ;; :config
-  ;; (load-theme 'spacemacs-dark t))
 (use-package zenburn-theme
      :config
      (load-theme 'zenburn t))
@@ -43,7 +41,7 @@
       telephone-line-secondary-left-separator 'telephone-line-cubed-hollow-left
       telephone-line-primary-right-separator 'telephone-line-cubed-right
       telephone-line-secondary-right-separator 'telephone-line-cubed-hollow-right)
-    (setq telephone-line-height 24
+(setq telephone-line-height 24
       telephone-line-evil-use-short-tag t))
 
 ;;;;
@@ -201,6 +199,10 @@
    (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
     (add-hook 'pdf-view-mode-hook (lambda () (display-line-numbers-mode 0)))
     )
+;;;python-jupyter
+(use-package jupyter
+  )
+
 ;;;org
 ;; Outline-based notes management and organizer
 (use-package org
@@ -213,7 +215,8 @@
         org-src-fontify-natively t
         org-startup-folded t
         org-edit-src-content-indentation 0)
-  (setq org-image-actual-width '(400))
+  (setq org-image-actual-width '(1024))
+  (add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images
   (add-hook 'org-mode-hook (lambda () (setq toggle-truncate-lines nil)))
   (org-babel-do-load-languages
         'org-babel-load-languages
@@ -287,9 +290,6 @@
             ;(setq conda-env-home-directory (expand-file-name "~/.conda/"))
 ;            (custom-set-variables '(conda-anaconda-home "C:/Python/anaconda3/"))))
 
-;;;python-jupyter
-(use-package jupyter
-  )
 ;;;keep on bottom
 ;;auto completion for emacs
 (use-package helm
