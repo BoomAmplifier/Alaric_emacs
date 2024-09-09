@@ -33,14 +33,15 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-one)
-
+(setq doom-font (font-spec :size 25 ))
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
-
+;(add-hook 'window-setup-hook #'toggle-frame-maximized)
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory '("/mnt/d/Home/Work/Git/PhD_Org/"))
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -77,49 +78,59 @@
 (setq +latex-viewers '(pdf-tools))
 
 ;;org gtd
-(setq org-agenda-files '("/mnt/d/Home/Works/Git/git_cloud/Alaric_GTD_org/"))
 
-(setq-default org-agenda-dir "/mnt/d/Home/Works/Git/git_cloud/Alaric_GTD_org/")
 
-(add-hook! 'org-capture-mode-hook
-  (defun +org--restart-mode-maybe-h ()
-    (when (memq #'+org--restart-mode-h doom-switch-buffer-hook)
-      (+org--restart-mode-h))))
+;; (add-hook! 'org-capture-mode-hook
+;;   (defun +org--restart-mode-maybe-h ()
+;;     (when (memq #'+org--restart-mode-h doom-switch-buffer-hook)
+;;       (+org--restart-mode-h))))
+;; ;
+;; (after! org
+;;   (advice-remove #'make-indirect-buffer #'+org--restart-mode-before-indirect-buffer-a)
+;;   (defadvice! +org--restart-mode-before-indirect-buffer-a (&optional buffer _)
+;;     :before #'org-capture-get-indirect-buffer
+;;     (with-current-buffer (or buffer (current-buffer))
+;;       (when (memq #'+org--restart-mode-h doom-switch-buffer-hook)
+;;         (+org--restart-mode-h)))))
+;; ;
+;
+;
+
+;;(setq-default org-agenda-dir '("/mnt/d/Home/Cloud/Nutstore/Alaric_GTD_org/"))
+;; (setq org-agenda-files '("/mnt/d/Home/Cloud/Nutstore/Alaric_GTD_org/"))
+;;; set file dir
 
 (after! org
-  (advice-remove #'make-indirect-buffer #'+org--restart-mode-before-indirect-buffer-a)
-  (defadvice! +org--restart-mode-before-indirect-buffer-a (&optional buffer _)
-    :before #'org-capture-get-indirect-buffer
-    (with-current-buffer (or buffer (current-buffer))
-      (when (memq #'+org--restart-mode-h doom-switch-buffer-hook)
-        (+org--restart-mode-h)))))
-
-(after! org
-  (defadvice! dan/org-capture-prevent-restart (fn &rest args)
-    :around #'+org--restart-mode-h
-    (unless (bound-and-true-p org-capture-mode)
-      (apply fn args)))
-  (add-hook! 'org-capture-after-finalize-hook
-             (let ((buffer (org-capture-get :buffer)))
-               (when (buffer-live-p buffer)
-                 (with-current-buffer buffer
-                   (+org--restart-mode-h)))))
+  (setq org-agenda-files '("/mnt/d/Home/Cloud/Nutstore/Alaric_GTD_org/"))
+;  (defadvice! dan/org-capture-prevent-restart (fn &rest args)
+;    :around #'+org--restart-mode-h
+;    (unless (bound-and-true-p org-capture-mode)
+;      (apply fn args)))
+;  (add-hook! 'org-capture-after-finalize-hook
+;             (let ((buffer (org-capture-get :buffer)))
+;               (when (buffer-live-p buffer)
+;                 (with-current-buffer buffer
+;                   (+org--restart-mode-h)))))
   (setq org-todo-keywords
     '((sequence "BUG(b!)" "|" "FIXED(f!)")
       (sequence "TODO(t!)" "SOMEDAY(s)" "|" "DONE(d!)" "CANCELED(c @/!)")
      ))
-;; 这边就是为路径赋值
+
   (defvar org-agenda-dir "" "gtd org files location")
+  (setq-default org-agenda-dir "/mnt/d/Home/Cloud/Nutstore/Alaric_GTD_org/")
+
   (setq org-agenda-file-inbox (expand-file-name "inbox.org" org-agenda-dir))
   (setq org-agenda-file-someday (expand-file-name "someday.org" org-agenda-dir))
   (setq org-agenda-file-note (expand-file-name "notes.org" org-agenda-dir))
   (setq org-agenda-file-task (expand-file-name "task.org" org-agenda-dir))
   (setq org-agenda-file-calendar (expand-file-name "calendar.org" org-agenda-dir))
+  (setq org-agenda-file-project (expand-file-name "project.org" org-agenda-dir))
   (setq org-agenda-file-finished (expand-file-name "finished.org" org-agenda-dir))
   (setq org-agenda-file-canceled (expand-file-name "canceled.org" org-agenda-dir))
 
 
-;; 添加每次打开时可添加的任务类型
+
+;; set template
   (setq org-capture-templates
         '(
           ("t" "Todo [inbox]" entry (file+headline org-agenda-file-inbox "Inbox")
@@ -146,13 +157,14 @@
           )
         )
 
-;; 绑定键位
+;; refile
   (define-key global-map "\C-cr" 'org-refile)
-;; 添加finished和canceled两个文件路径，并且只转移到一级标题
+;; finished and canceled file dir
   (setq org-refile-targets  '((org-agenda-file-finished :maxlevel . 1)
                              (org-agenda-file-canceled :maxlevel . 1)
                              (org-agenda-file-task :maxlevel . 3)
                              (org-agenda-file-someday :maxlevel . 3)
                              (org-agenda-file-calendar :maxlevel . 3)
+                             (org-agenda-file-project :maxlevel . 3)
                              ))
 )
