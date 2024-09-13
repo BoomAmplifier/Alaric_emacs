@@ -33,7 +33,7 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-one)
-(setq doom-font (font-spec :size 25 ))
+(setq doom-font (font-spec :size 20 ))
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
@@ -113,9 +113,14 @@
 ;                   (+org--restart-mode-h)))))
   (setq org-todo-keywords
     '((sequence "BUG(b!)" "|" "FIXED(f!)")
-      (sequence "TODO(t!)" "SOMEDAY(s)" "|" "DONE(d!)" "CANCELED(c @/!)")
+      (sequence "TODO(t!)" "InProgress(s!)" "|" "DONE(d!)" "CANCELED(c @/!)")
      ))
-
+  (setq org-todo-keyword-faces
+     '(("InProgress" . (:foreground "DarkViolet" :weight bold))
+       ("CANCELED" . "red")
+       ("DONE" . "Grey")
+       )
+  )
   (defvar org-agenda-dir "" "gtd org files location")
   (setq-default org-agenda-dir "/mnt/d/Home/Cloud/Nutstore/Alaric_GTD_org/")
 
